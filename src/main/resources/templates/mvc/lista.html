@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC - Tareas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <!-- Card principal -->
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">📋 Lista de Tareas (MVC)</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <!-- Formulario crear tarea -->
+                    <form action="/mvc" method="post" class="mb-4">
+                        <div class="input-group">
+                            <input type="text"
+                                   name="titulo"
+                                   class="form-control"
+                                   placeholder="Nueva tarea..."
+                                   required>
+                            <button type="submit" class="btn btn-success">
+                                Agregar
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Lista de tareas -->
+                    <ul class="list-group">
+                        <li th:each="task : ${tasks}"
+                            class="list-group-item d-flex justify-content-between align-items-center"
+                            th:classappend="${task.completada} ? 'list-group-item-success'">
+
+                            <!-- Título -->
+                            <span th:text="${task.titulo}"
+                                  th:classappend="${task.completada} ? 'text-decoration-line-through text-muted'">
+                                </span>
+
+                            <!-- Botones -->
+                            <div class="btn-group btn-group-sm">
+                                <!-- Completar -->
+                                <form th:unless="${task.completada}"
+                                      th:action="@{/mvc/{id}/completar(id=${task.id})}"
+                                      method="post"
+                                      class="d-inline">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        ✓
+                                    </button>
+                                </form>
+
+                                <!-- Eliminar -->
+                                <form th:action="@{/mvc/{id}/eliminar(id=${task.id})}"
+                                      method="post"
+                                      class="d-inline">
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        🗑
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Mensaje vacío -->
+                        <li th:if="${#lists.isEmpty(tasks)}"
+                            class="list-group-item text-center text-muted">
+                            No hay tareas. ¡Agrega una!
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- Footer con contador -->
+                <div class="card-footer text-muted text-center">
+                    <span th:text="${#lists.size(tasks)} + ' tarea(s)'"></span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (opcional, para componentes interactivos) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
