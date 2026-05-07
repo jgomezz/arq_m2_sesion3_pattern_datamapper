@@ -1,5 +1,6 @@
 package pe.edu.tecsup.mvc.app.mapper;
 
+import org.springframework.stereotype.Component;
 import pe.edu.tecsup.mvc.app.domain.Task;
 import pe.edu.tecsup.mvc.app.entity.TaskEntity;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class TaskMapper {
 
     public TaskEntity toEntity(Task domain) {

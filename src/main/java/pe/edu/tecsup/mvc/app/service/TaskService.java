@@ -12,20 +12,21 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository repository;
+    private final TaskMapper mapper;
 
-    public TaskService(TaskRepository repository) {
+    public TaskService(TaskRepository repository,  TaskMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     public List<Task> listar() {
 
-        TaskMapper mapper = new TaskMapper();
 
         List<TaskEntity> entityTasks = repository.findAll();
 
         // TO DO
 
-        return mapper.toDomainList(entityTasks);
+        return this.mapper.toDomainList(entityTasks);
     }
 
     public void crear(String titulo) {
