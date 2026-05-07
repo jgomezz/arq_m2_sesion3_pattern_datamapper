@@ -3,7 +3,6 @@ package pe.edu.tecsup.mvc.app.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pe.edu.tecsup.mvc.app.domain.Task;
-import pe.edu.tecsup.mvc.app.persistence.mapper.TaskMapper;
 import pe.edu.tecsup.mvc.app.repository.TaskRepository;
 
 import java.util.List;
@@ -18,7 +17,6 @@ public class TaskService {
 
         List<Task> tasks = repository.findAll();
         // TO DO
-        //return this.mapper.toDomainList(entityTasks);
         return tasks;
     }
 
@@ -27,14 +25,7 @@ public class TaskService {
         Task task = Task.builder()
                 .titulo(titulo)
                 .build();
-
         // TO DO
-
-
-
-        //TaskEntity taskEntity = this.mapper.toEntity(task);
-
-        //repository.save(taskEntity);
         repository.save(task);
     }
 
