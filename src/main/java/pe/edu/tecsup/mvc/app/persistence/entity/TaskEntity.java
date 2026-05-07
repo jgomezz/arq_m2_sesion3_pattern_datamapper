@@ -1,4 +1,4 @@
-package pe.edu.tecsup.mvc.app.entity;
+package pe.edu.tecsup.mvc.app.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

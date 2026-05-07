@@ -1,10 +1,9 @@
-package pe.edu.tecsup.mvc.app.mapper;
+package pe.edu.tecsup.mvc.app.persistence.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 import pe.edu.tecsup.mvc.app.domain.Task;
-import pe.edu.tecsup.mvc.app.entity.TaskEntity;
+import pe.edu.tecsup.mvc.app.persistence.entity.TaskEntity;
 
 import java.util.List;
 

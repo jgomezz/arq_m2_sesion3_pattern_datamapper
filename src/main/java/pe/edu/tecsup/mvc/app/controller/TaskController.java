@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.tecsup.mvc.app.domain.Task;
-import pe.edu.tecsup.mvc.app.entity.TaskEntity;
-import pe.edu.tecsup.mvc.app.mapper.TaskMapper;
 import pe.edu.tecsup.mvc.app.service.TaskService;
 
 import java.util.List;

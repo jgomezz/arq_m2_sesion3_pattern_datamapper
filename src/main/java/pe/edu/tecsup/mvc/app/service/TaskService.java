@@ -3,8 +3,7 @@ package pe.edu.tecsup.mvc.app.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pe.edu.tecsup.mvc.app.domain.Task;
-import pe.edu.tecsup.mvc.app.entity.TaskEntity;
-import pe.edu.tecsup.mvc.app.mapper.TaskMapper;
+import pe.edu.tecsup.mvc.app.persistence.mapper.TaskMapper;
 import pe.edu.tecsup.mvc.app.repository.TaskRepository;
 
 import java.util.List;
@@ -14,13 +13,13 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository repository;
-    private final TaskMapper mapper;
 
     public List<Task> listar() {
 
-        List<TaskEntity> entityTasks = repository.findAll();
+        List<Task> tasks = repository.findAll();
         // TO DO
-        return this.mapper.toDomainList(entityTasks);
+        //return this.mapper.toDomainList(entityTasks);
+        return tasks;
     }
 
     public void crear(String titulo) {
@@ -33,14 +32,14 @@ public class TaskService {
 
 
 
-        TaskEntity taskEntity = this.mapper.toEntity(task);
+        //TaskEntity taskEntity = this.mapper.toEntity(task);
 
-        repository.save(taskEntity);
+        //repository.save(taskEntity);
+        repository.save(task);
     }
 
     public void completar(Long id) {
-        TaskEntity task = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
+        Task task = repository.findById(id);
         task.setCompletada(true);
         repository.save(task);
     }
