@@ -1,7 +1,9 @@
 package pe.edu.tecsup.mvc.app.service;
 
 import org.springframework.stereotype.Service;
+import pe.edu.tecsup.mvc.app.domain.Task;
 import pe.edu.tecsup.mvc.app.entity.TaskEntity;
+import pe.edu.tecsup.mvc.app.mapper.TaskMapper;
 import pe.edu.tecsup.mvc.app.repository.TaskRepository;
 
 import java.util.List;
@@ -15,8 +17,15 @@ public class TaskService {
         this.repository = repository;
     }
 
-    public List<TaskEntity> listar() {
-        return repository.findAll();
+    public List<Task> listar() {
+
+        TaskMapper mapper = new TaskMapper();
+
+        List<TaskEntity> entityTasks = repository.findAll();
+
+        // TO DO
+
+        return mapper.toDomainList(entityTasks);
     }
 
     public void crear(String titulo) {

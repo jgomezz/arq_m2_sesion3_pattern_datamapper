@@ -25,9 +25,9 @@ public class TaskMapper {
     public List<Task> toDomainList(List<TaskEntity> entityTasks) {
 
 //*
-    //    entityTasks.stream().map(this::toDomain).collect(Collectors.toList());
+        return entityTasks.stream().map(this::toDomain).toList();
 //*/
-
+/*
         List<Task> tasks = new ArrayList<>();
 
         for(TaskEntity entity : entityTasks){
@@ -36,5 +36,6 @@ public class TaskMapper {
         }
 
         return tasks;
+    }*/
     }
 }

@@ -23,13 +23,7 @@ public class TaskController {
     // Listar tareas
     @GetMapping
     public String listar(Model model) {
-
-        TaskMapper mapper = new TaskMapper();
-
-        List<TaskEntity> entityTasks = service.listar();
-
-        List<Task> tasks = mapper.toDomainList(entityTasks);
-
+        List<Task> tasks = service.listar();
         model.addAttribute("tasks", tasks);
         return "mvc/lista";
     }
