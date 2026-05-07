@@ -2,11 +2,11 @@ package pe.edu.tecsup.mvc.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.tecsup.mvc.app.entity.Task;
+import pe.edu.tecsup.mvc.app.entity.TaskEntity;
 
 //*
 @Repository
-public interface TaskRepository extends JpaRepository<Task, Long> {
+public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
 
 }
 //*/
