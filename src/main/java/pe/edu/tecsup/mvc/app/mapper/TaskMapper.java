@@ -1,11 +1,29 @@
 package pe.edu.tecsup.mvc.app.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 import pe.edu.tecsup.mvc.app.domain.Task;
 import pe.edu.tecsup.mvc.app.entity.TaskEntity;
 
 import java.util.List;
 
+
+@Mapper(componentModel = "spring")
+public interface TaskMapper{
+
+    TaskMapper INSTANCE = Mappers.getMapper( TaskMapper.class );
+
+    Task toDomain(TaskEntity entity);
+
+    TaskEntity toEntity(Task domain);
+
+    List<Task> toDomainList(List<TaskEntity> entityTasks);
+
+    List<TaskEntity> toEntityList(List<Task> domainTasks);
+}
+
+/*
 @Component
 public class TaskMapper {
 
@@ -31,3 +49,4 @@ public class TaskMapper {
 
     }
 }
+*/
