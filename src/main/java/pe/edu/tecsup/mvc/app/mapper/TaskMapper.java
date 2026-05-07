@@ -12,7 +12,10 @@ import java.util.stream.Collectors;
 public class TaskMapper {
 
     public TaskEntity toEntity(Task domain) {
-        return null;
+
+        return TaskEntity.builder()
+                .titulo(domain.getTitulo())
+                .build();
     }
 
 

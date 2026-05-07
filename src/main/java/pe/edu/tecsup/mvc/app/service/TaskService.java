@@ -24,13 +24,18 @@ public class TaskService {
     }
 
     public void crear(String titulo) {
-        //TaskEntity task = new TaskEntity(null, titulo);
+
+        Task task = Task.builder()
+                .titulo(titulo)
+                .build();
+
+        // TO DO
 
 
-        TaskEntity task = TaskEntity.builder()
-                                .titulo(titulo)
-                                .build();
-        repository.save(task);
+
+        TaskEntity taskEntity = this.mapper.toEntity(task);
+
+        repository.save(taskEntity);
     }
 
     public void completar(Long id) {
