@@ -1,5 +1,6 @@
 package pe.edu.tecsup.mvc.app.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pe.edu.tecsup.mvc.app.domain.Task;
 import pe.edu.tecsup.mvc.app.entity.TaskEntity;
@@ -8,29 +9,24 @@ import pe.edu.tecsup.mvc.app.repository.TaskRepository;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class TaskService {
 
     private final TaskRepository repository;
     private final TaskMapper mapper;
 
-    public TaskService(TaskRepository repository,  TaskMapper mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
-    }
-
     public List<Task> listar() {
 
-
         List<TaskEntity> entityTasks = repository.findAll();
-
         // TO DO
-
         return this.mapper.toDomainList(entityTasks);
     }
 
     public void crear(String titulo) {
         //TaskEntity task = new TaskEntity(null, titulo);
+
+
         TaskEntity task = TaskEntity.builder()
                                 .titulo(titulo)
                                 .build();
